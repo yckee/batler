@@ -21,11 +21,11 @@ func set_texture_size(_size):
 	scale = Vector2(_size, _size) / $Sprite.texture.get_size()
 
 func get_texture_size():
-	print(round(scale.x *$Sprite.texture.get_width()))
 	return round($Sprite.texture.get_width() * scale.x)
 
-func move_piece(dir, num_tiles):
-	var dest = MOVE_DIRACTIONS[dir] * Vector2(self.texture_size, self.texture_size) * num_tiles + position
+func move_piece(move: Dictionary):
+	"Move is a sttruct {dir, num_tiles}"
+	var dest = MOVE_DIRACTIONS[move.dir] * Vector2(self.texture_size, self.texture_size) * move.num_tiles + position
 	var tween := create_tween()
 	tween.tween_property(
 		self, "position", dest, 0.7

@@ -1,4 +1,5 @@
 extends Node2D
+class_name Board
 
 const BoardTileScene = preload("res://Scenes/BoardTile.tscn")
 const PieceScene = preload("res://Scenes/Piece.tscn")
@@ -10,7 +11,7 @@ const PieceScene = preload("res://Scenes/Piece.tscn")
 var tiles: Array  
 var pieces: Array
 
-signal advance_finished
+signal advanced
 
 func _ready():
 	# init empty 2D Array of tiles
@@ -33,8 +34,6 @@ func init_board():
 			tile.tile_size = 64
 			tile.tile_pos = Vector2(col, row)
 			tile.tile_type = tile_type
-			tile.connect("piece_spawned",Callable(self,"spawn_piece"))
-			tile.connect("piece_removed",Callable(self,"remove_piece"))
 			tiles[row][col] = tile
 			add_child(tile)
 
@@ -48,7 +47,6 @@ func spawn_piece(tile):
 
 
 func remove_piece(tile):
-	print(tile.tile_pos)
 	var piece = tile.object_on_tile
 	piece.queue_free()
 	tile.object_on_tile = null
@@ -70,15 +68,43 @@ func take_piece(piece) -> Piece:
 	remove_child(piece)
 	
 	return piece
+
+
+func move_piece(piece, direction, num_tiles):
+	var dest = piece.placed_at.tile_pos + (Piece.MOVE_DIRACTIONS[direction] * num_tiles)
+
+	if _is_on_grid(dest):
+		var tile_to_move = tiles[dest.y][dest.x]
+		var cur_tile_pos = piece.placed_at.tile_pos
+		if !tile_to_move.object_on_tile:
+				piece.move_piece(direction, num_tiles)
+				tile_to_move.object_on_tile = piece
+				piece.placed_at = tile_to_move
+				tiles[cur_tile_pos.y][cur_tile_pos.x].object_on_tile = null
+				
+	
 	
 
 func advance_pieces():
-	for piece in pieces:
-		piece.move_piece("up", 1)
-	
-	emit_signal("advance_finished")
-#	yield(, "Move_Piece_Finished")
+	var moving
+	for row in tiles:
+		moving = false
+		for tile in row:
+			if tile.object_on_tile:
+				move_piece(tile.object_on_tile, "up", 1)
+				moving = true
+		if moving:
+			await SignalBus.move_piece_finished
 
-func _input(event):
-	if event.is_action_pressed("ui_select"):
-		get_tree().call_group("Player_Pieces", "move_piece", "up", 1)
+	emit_signal("advanced")
+	print("advanced")
+
+
+
+
+func _is_on_grid(pos):
+	return pos.x >= 0 and pos.y >= 0 and pos.x <= board_size.x and pos.y <= board_size.y
+
+#func _input(event):
+#	if event.is_action_pressed("ui_select"):
+#		get_tree().call_group("Player_Pieces", "move_piece", "up", 1)

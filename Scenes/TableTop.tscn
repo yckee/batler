@@ -1,17 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://2xn5ebfb2m6m"]
 
-[ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scripts/TableTop.gd" type="Script" id=2]
+[ext_resource type="PackedScene" uid="uid://bi1e2cx7t5ycd" path="res://Scenes/Board.tscn" id="1"]
+[ext_resource type="Script" path="res://Scripts/TableTop.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://cnfg3jjjfcf6s" path="res://Scenes/PieceHolder.tscn" id="3_u04p5"]
 
 [node name="TableTop" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[node name="Board" parent="." instance=ExtResource( 1 )]
-position = Vector2( 350, 100 )
-board_size = Vector2( 4, 6 )
+[node name="Board" parent="." instance=ExtResource("1")]
+position = Vector2(350, 100)
+board_size = Vector2(4, 6)
 tile_type = "board_tile"
 
-[node name="PieceHolder" parent="." instance=ExtResource( 1 )]
-position = Vector2( 350, 550 )
-board_size = Vector2( 4, 1 )
+[node name="PieceHolder" parent="." instance=ExtResource("3_u04p5")]
+position = Vector2(350, 550)
+board_size = Vector2(4, 1)
 tile_type = "holder_tile"

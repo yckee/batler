@@ -19,7 +19,7 @@ func _ready():
 
 func set_tile_size(_size):
 	$Background.scale = Vector2(_size, _size) / $Background.texture.get_size()
-	$CollisionShape2D.shape.size = Vector2(_size, _size) / 2
+	$CollisionShape2D.shape.size = Vector2(_size, _size)
 	$CollisionShape2D.position = Vector2(_size, _size) / 2
 
 func get_tile_size():

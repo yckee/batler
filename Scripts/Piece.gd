@@ -7,11 +7,11 @@ const MOVE_DIRACTIONS = {
 	"left"  : Vector2(-1,  0),
 	"right" : Vector2( 1,  0)  
 }
+
 var texture_size : get = get_texture_size, set = set_texture_size
 
 var placed_at
 
-signal move_finished
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,10 +29,11 @@ func move_piece(dir, num_tiles):
 	var dest = MOVE_DIRACTIONS[dir] * Vector2(self.texture_size, self.texture_size) * num_tiles + position
 	var tween := create_tween()
 	tween.tween_property(
-		self, "position", dest, 0.75
+		self, "position", dest, 0.55
 	).set_trans(Tween.TRANS_CUBIC)
-	tween.tween_interval(0.5)
+#	tween.tween_interval(0.5)
 	
 	await tween.finished
 	SignalBus.emit_signal("move_piece_finished")
+
 	

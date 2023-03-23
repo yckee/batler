@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnfg3jjjfcf6s"]
+
+[ext_resource type="Script" path="res://Scripts/PieceHolder.gd" id="1_rc84k"]
+
+[node name="PieceHolder" type="Node2D"]
+script = ExtResource("1_rc84k")

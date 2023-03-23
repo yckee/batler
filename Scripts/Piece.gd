@@ -1,4 +1,5 @@
 extends Node2D
+class_name Piece
 
 const MOVE_DIRACTIONS = {
 	"up"    : Vector2( 0, -1),
@@ -6,10 +7,11 @@ const MOVE_DIRACTIONS = {
 	"left"  : Vector2(-1,  0),
 	"right" : Vector2( 1,  0)  
 }
-var texture_size setget set_texture_size, get_texture_size
+var texture_size : get = get_texture_size, set = set_texture_size
 
 var placed_at
 
+signal move_finished
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,18 +20,19 @@ func _ready():
 	
 
 func set_texture_size(_size):
-	scale = Vector2(_size, _size) / $Sprite.texture.get_size()
+	scale = Vector2(_size, _size) / $Sprite2D.texture.get_size()
 
 func get_texture_size():
-	print(round(scale.x *$Sprite.texture.get_width()))
-	return round($Sprite.texture.get_width() * scale.x)
+	return round($Sprite2D.texture.get_width() * scale.x)
 
 func move_piece(dir, num_tiles):
 	var dest = MOVE_DIRACTIONS[dir] * Vector2(self.texture_size, self.texture_size) * num_tiles + position
 	var tween := create_tween()
 	tween.tween_property(
-		self, "position", dest, 0.7
-	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		self, "position", dest, 0.75
+	).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_interval(0.5)
 	
-
+	await tween.finished
+	SignalBus.emit_signal("move_piece_finished")
 	

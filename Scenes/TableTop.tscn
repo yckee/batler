@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/TableTop.gd" type="Script" id=2]
+
+[node name="TableTop" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Board" parent="." instance=ExtResource( 1 )]
+position = Vector2( 350, 100 )
+board_size = Vector2( 4, 6 )
+tile_type = "board_tile"
+
+[node name="PieceHolder" parent="." instance=ExtResource( 1 )]
+position = Vector2( 350, 550 )
+board_size = Vector2( 4, 1 )
+tile_type = "holder_tile"

@@ -13,7 +13,6 @@ var texture_size : get = get_texture_size, set = set_texture_size
 var placed_at
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 #	self.texture_size = 80
 	pass
@@ -31,7 +30,7 @@ func move_piece(dir, num_tiles):
 	tween.tween_property(
 		self, "position", dest, 0.55
 	).set_trans(Tween.TRANS_CUBIC)
-#	tween.tween_interval(0.5)
+
 	
 	await tween.finished
 	SignalBus.emit_signal("move_piece_finished")

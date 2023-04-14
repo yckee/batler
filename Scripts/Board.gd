@@ -100,11 +100,6 @@ func advance_pieces():
 	print("advanced")
 
 
-
-
 func _is_on_grid(pos):
 	return pos.x >= 0 and pos.y >= 0 and pos.x <= board_size.x and pos.y <= board_size.y
 
-#func _input(event):
-#	if event.is_action_pressed("ui_select"):
-#		get_tree().call_group("Player_Pieces", "move_piece", "up", 1)

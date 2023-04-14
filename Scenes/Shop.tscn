@@ -1,0 +1,125 @@
+[gd_scene load_steps=8 format=3 uid="uid://1bknb0fh04vi"]
+
+[ext_resource type="Texture2D" uid="uid://clpnunigfe2xj" path="res://Assets/backgorund.png" id="1_iu8yt"]
+[ext_resource type="Texture2D" uid="uid://cwodjskenx1ba" path="res://icon.png" id="1_uervt"]
+[ext_resource type="Texture2D" uid="uid://gn6upo1xpmch" path="res://Assets/UI/unlocked.png" id="2_b4abg"]
+[ext_resource type="Texture2D" uid="uid://cpvohkiypbucc" path="res://Assets/UI/locked.png" id="3_x5x87"]
+[ext_resource type="Texture2D" uid="uid://b0bqd7gm8xquy" path="res://Assets/UI/question.png" id="4_mmp5u"]
+[ext_resource type="Texture2D" uid="uid://u1ug0ykuwrh2" path="res://Assets/UI/arrowUp.png" id="6_neypf"]
+[ext_resource type="Texture2D" uid="uid://cr8krtth52shb" path="res://Assets/UI/return.png" id="7_382v0"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -680.0
+offset_bottom = -520.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_iu8yt")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 40
+columns = 3
+
+[node name="LeftBox" type="MarginContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 30
+
+[node name="Buttons" type="VBoxContainer" parent="GridContainer/LeftBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="LockBut" type="TextureButton" parent="GridContainer/LeftBox/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+texture_normal = ExtResource("2_b4abg")
+texture_pressed = ExtResource("3_x5x87")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="HelpBut" type="TextureButton" parent="GridContainer/LeftBox/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("4_mmp5u")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Perks" type="HBoxContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Perk1" type="TextureRect" parent="GridContainer/Perks"]
+layout_mode = 2
+texture = ExtResource("1_uervt")
+
+[node name="Perk2" type="TextureRect" parent="GridContainer/Perks"]
+layout_mode = 2
+texture = ExtResource("1_uervt")
+
+[node name="Perk3" type="TextureRect" parent="GridContainer/Perks"]
+layout_mode = 2
+texture = ExtResource("1_uervt")
+
+[node name="Perk4" type="TextureRect" parent="GridContainer/Perks"]
+layout_mode = 2
+texture = ExtResource("1_uervt")
+
+[node name="Perk5" type="TextureRect" parent="GridContainer/Perks"]
+layout_mode = 2
+texture = ExtResource("1_uervt")
+
+[node name="RightBox" type="MarginContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 30
+
+[node name="Buttons" type="VBoxContainer" parent="GridContainer/RightBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="UpgadeBut" type="TextureButton" parent="GridContainer/RightBox/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("6_neypf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RerollBut" type="TextureButton" parent="GridContainer/RightBox/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("7_382v0")
+ignore_texture_size = true
+stretch_mode = 0

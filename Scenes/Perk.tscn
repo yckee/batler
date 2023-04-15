@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmcrmve6xj87u"]
+
+[ext_resource type="Texture2D" uid="uid://cwodjskenx1ba" path="res://icon.png" id="1_37wcs"]
+
+[node name="Perk" type="MarginContainer"]
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_37wcs")
+stretch_mode = 2

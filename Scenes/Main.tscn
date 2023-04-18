@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_ks57j"]
 [ext_resource type="PackedScene" uid="uid://2xn5ebfb2m6m" path="res://Scenes/TableTop.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://1bknb0fh04vi" path="res://Scenes/Shop.tscn" id="3_jkyy1"]
+[ext_resource type="PackedScene" uid="uid://ddt5l6k68r5t" path="res://Scenes/Forge.tscn" id="3_ufpg4"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ks57j")
 
 [node name="TableTop" parent="." instance=ExtResource("2")]
 
-[node name="Shop" parent="." instance=ExtResource("3_jkyy1")]
-offset_left = 600.0
+[node name="Forge" parent="." instance=ExtResource("3_ufpg4")]
+offset_left = 650.0
 offset_top = 55.0
-offset_right = 1200.0
-offset_bottom = 255.0
+offset_right = 1195.0
+offset_bottom = 720.0
 
 [editable path="TableTop"]

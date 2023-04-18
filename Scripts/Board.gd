@@ -81,9 +81,7 @@ func move_piece(piece, direction, num_tiles):
 				tile_to_move.object_on_tile = piece
 				piece.placed_at = tile_to_move
 				tiles[cur_tile_pos.y][cur_tile_pos.x].object_on_tile = null
-				
-	
-	
+
 
 func advance_pieces():
 	var moving

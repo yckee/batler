@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddt5l6k68r5t"]
+
+[ext_resource type="Script" path="res://Scripts/Forge.gd" id="1_1cmie"]
+[ext_resource type="PackedScene" uid="uid://1bknb0fh04vi" path="res://Scenes/Shop.tscn" id="1_r3koa"]
+[ext_resource type="PackedScene" uid="uid://cf3h81pbu3f2y" path="res://Scenes/Inventory.tscn" id="2_4da6e"]
+
+[node name="Forge" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -735.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1cmie")
+
+[node name="Shop" parent="." instance=ExtResource("1_r3koa")]
+layout_mode = 1
+offset_right = 0.0
+
+[node name="Inventory" parent="." instance=ExtResource("2_4da6e")]
+offset_left = 100.0
+offset_top = 500.0
+offset_right = 450.0
+offset_bottom = 650.0
